@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "ctrl-opt-invest",
+  "projects": {
+    "ctrl-opt-invest": {
+      "projectType": "application",
+      "root": "apps/ctrl-opt-invest",
+      "sourceRoot": "apps/ctrl-opt-invest/src",
+      "prefix": "fjudd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ctrl-opt-invest",
+            "index": "apps/ctrl-opt-invest/src/index.html",
+            "main": "apps/ctrl-opt-invest/src/main.ts",
+            "polyfills": "apps/ctrl-opt-invest/src/polyfills.ts",
+            "tsConfig": "apps/ctrl-opt-invest/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/ctrl-opt-invest/src/favicon.ico",
+              "apps/ctrl-opt-invest/src/assets"
+            ],
+            "styles": ["apps/ctrl-opt-invest/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ctrl-opt-invest/src/environments/environment.ts",
+                  "with": "apps/ctrl-opt-invest/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ctrl-opt-invest:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ctrl-opt-invest:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ctrl-opt-invest:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/ctrl-opt-invest/src/**/*.ts",
+              "apps/ctrl-opt-invest/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/ctrl-opt-invest"],
+          "options": {
+            "jestConfig": "apps/ctrl-opt-invest/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ctrl-opt-invest-e2e": {
+      "root": "apps/ctrl-opt-invest-e2e",
+      "sourceRoot": "apps/ctrl-opt-invest-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ctrl-opt-invest-e2e/cypress.json",
+            "tsConfig": "apps/ctrl-opt-invest-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ctrl-opt-invest:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ctrl-opt-invest:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ctrl-opt-invest-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  }
+}
