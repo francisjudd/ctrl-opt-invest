@@ -51,7 +51,9 @@
               "apps/ctrl-opt-invest/src/favicon.ico",
               "apps/ctrl-opt-invest/src/assets"
             ],
-            "styles": ["apps/ctrl-opt-invest/src/styles.scss"],
+            "styles": [
+              "apps/ctrl-opt-invest/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -112,11 +114,17 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/ctrl-opt-invest"],
+          "outputs": [
+            "coverage/apps/ctrl-opt-invest"
+          ],
           "options": {
             "jestConfig": "apps/ctrl-opt-invest/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
@@ -141,7 +149,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/ctrl-opt-invest-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/ctrl-opt-invest-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
