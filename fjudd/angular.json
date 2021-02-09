@@ -124,7 +124,11 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "branch": "main",
+            "baseHref": "/ctrl-opt-invest/",
+            "cname": "https://fjudd.co.uk"
+          }
         }
       }
     },
