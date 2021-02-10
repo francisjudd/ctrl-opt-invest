@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/ctrl-opt-invest",
+            "outputPath": "../docs",
             "index": "apps/ctrl-opt-invest/src/index.html",
             "main": "apps/ctrl-opt-invest/src/main.ts",
             "polyfills": "apps/ctrl-opt-invest/src/polyfills.ts",
