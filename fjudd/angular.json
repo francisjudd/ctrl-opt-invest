@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/ctrl-opt-invest",
+            "outputPath": "../docs",
             "index": "apps/ctrl-opt-invest/src/index.html",
             "main": "apps/ctrl-opt-invest/src/main.ts",
             "polyfills": "apps/ctrl-opt-invest/src/polyfills.ts",
@@ -123,12 +123,7 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "branch": "main",
-            "baseHref": "/ctrl-opt-invest/",
-            "cname": "https://fjudd.co.uk"
-          }
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     },
